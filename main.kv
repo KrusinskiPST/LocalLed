@@ -1,0 +1,248 @@
+<GUI>:
+    Image:
+        source: 'img/OIG.jpg'
+        allow_stretch: True
+        keep_ratio: False
+        size: root.width, root.height
+        orientation: "vertical"
+        antialias: True
+        z_index: 0  
+
+        BoxLayout:
+            orientation: "vertical"
+            pos: root.center_y - self.width * 3, root.top - 520  
+            spacing: 50
+            Label:
+                text: '                     Kolor'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                font_size: 30
+                outline_color: 0, 0, 0, 1  
+                outline_width: 2
+            ImageColorPicker:
+                source: 'img/klik.png'  
+                size_hint: None, None
+                size: 250, 250
+                allow_stretch: True
+                keep_ratio: True
+                id: klik_image
+
+
+            Label:
+                text: ''
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                font_size: 30
+                
+        BoxLayout:
+            orientation: "vertical"
+            pos: root.center_y - self.width * -0.76, root.top - 520  
+            spacing: 50
+            Label:
+                text: '                     Barwa'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                font_size: 30
+                outline_color: 0, 0, 0, 1  
+                outline_width: 2
+            ImageColorPicker:
+                source: 'img/klik2.png'  
+                size_hint: None, None
+                size: 250, 250
+                allow_stretch: True
+                keep_ratio: True        
+            Label:
+                text: ''
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                font_size: 30
+             
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+            pos: root.center_y - self.width * 2, root.top - 600
+            Label:
+                id: label
+                text: "Jasność: 100%"
+                size_hint_y: None
+                height: self.texture_size[1]
+                size_hint_x: 5
+                font_size: 30
+                outline_color: 0, 0, 0, 1
+                outline_width: 2
+            Slider:
+                id: brightness_slider
+                min: 10
+                max: 1000
+                value: 1000
+                on_value: root.on_slider_value_change(*args)
+                size_hint_x: 5
+
+        BoxLayout: 
+            height: 120
+            orientation: "horizontal"
+            pos: root.center_x - self.width / 2, root.x
+
+            Button:
+                background_color: 1, 0, 0, 0
+                on_press: root.powerbutton_detector()
+                Image:
+                    id: power_button
+                    source: 'img/Off.ico'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    
+                    
+    
+    BoxLayout:
+        id: new_box  # Identyfikator nowego BoxLayout
+        orientation: 'horizontal'
+        opacity: 0  
+        disabled: True
+        background_color: 0, 0, 0, 0.3
+        size_hint: (None, None)
+        height: 140  # Ustalamy wysokość
+        width: 700
+        center_x: self.parent.center_x - 20
+        center_y: self.parent.center_y + 310
+        canvas.before:
+            Color:
+                rgba: self.background_color  
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [50, 50, 50, 50]
+        ScrollView:
+            do_scroll_x: True
+            scroll_x: 0
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: 12  # Odstęp między przyciskami
+                size_hint_x: None
+                width: self.minimum_width 
+                Button:
+                    background_color: 1, 0, 0, 0
+                    size: 120, 120
+                Button:
+                    background_color: 1, 0, 0, 0
+                    size: 120, 120
+                Button:
+                    background_color: 1, 0, 0, 0
+                    on_press:root.nature()
+                    size: 120, 120
+                    size_hint:None, None
+                    Image:
+                        source: 'tex.png'
+                        size: 120, 120
+                        source: 'img/nature.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+
+                    Label:
+                        text: 'Natura'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y - 40
+                        outline_color: 0, 0, 0, 1
+                        outline_width: 2
+                Button:
+                    background_color: 1, 0, 0, 0
+                    on_press:root.night()
+                    size: 120, 120
+                    size_hint:None, None
+                    Image:
+                        size: 120, 120
+                        source: 'img/music.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                    Label:
+                        text: 'Noc'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y - 40
+                        outline_color: 0, 0, 0, 1
+                        outline_width: 2
+
+                Button:
+                    background_color: 1, 0, 0, 0
+                    on_press:root.read()
+                    size: 120, 120
+                    size_hint:None, None
+                    Image:
+                        size: 120, 120
+                        source: 'img/read.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                    Label:
+                        text: 'Czytanie'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y - 40
+                        outline_color: 0, 0, 0, 1
+                        outline_width: 2
+                Button:
+                    background_color: 1, 0, 0, 0
+                    on_press:root.rave()
+                    size: 120, 120
+                    size_hint:None, None
+                    Image:
+                        size: 120, 120
+                        source: 'img/rave.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                    Label:
+                        text: 'Rave'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y - 40
+                        outline_color: 0, 0, 0, 1
+                        outline_width: 2
+                Button:
+                    background_color: 1, 0, 0, 0
+                    on_press:root.rainbow()
+                    size_hint:None, None
+                    size: 120, 120
+                    Image:
+                        size: 120, 120
+                        source: 'img/rainbow.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+                    Label:
+                        text: 'Tęcza'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y - 40
+                        outline_color: 0, 0, 0, 1
+                        outline_width: 2
+                
+    BoxLayout:
+        pos: root.center_x - self.width / 2, root.x
+        pos: root.center_y - self.width + 415 , root.top - 100
+        Button:
+            pos: root.center_y - self.width + 390, root.top
+            on_press: root.options()  # Zmieniamy wywołanie funkcji
+            background_color: 1, 0, 0, 0
+            size: 90, 90
+            Image:
+                id: options
+                source: 'img/options.png'
+                size_hint: None, None
+                size: 50, 50
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+    BoxLayout:
+        id: scene
+        height: 120
+        orientation: "horizontal"
+        pos: root.center_x - self.width / 2, root.x
+        pos: root.center_y - self.width + 415 , root.top - 180
+        opacity: 0  
+        disabled: True
+        Button:
+            pos: root.center_y - self.width, root.top
+            on_press: root.options()  # Zmieniamy wywołanie funkcji
+            background_color: 1, 0, 0, 0
+            size: 90, 90
+            Image:
+                source: 'img/options-add.png'
+                size_hint: None, None
+                size: 50, 50
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+    
